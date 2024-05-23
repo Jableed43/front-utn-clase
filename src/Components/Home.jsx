@@ -7,19 +7,24 @@ function Home() {
   const [users, setUsers] = useState([]);
   const { fetchUsers } = useFetchUser();
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
 
-  const fetchUsersCallback = useCallback(() => {
-    fetchUsers().then(data => setUsers(data));
+  const fetchUsersCallback = useCallback(async () => {
+    console.log("Fetching users...");
+    const data = await fetchUsers();
+    console.log("Users fetched:", data);
+    setUsers(data);
   }, [fetchUsers]);
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log("useEffect triggered, token:", token);
     if (!token) {
+      console.log("No token found, redirecting to login");
       navigate("/login");
     } else {
       fetchUsersCallback();
     }
-  }, [token, navigate, fetchUsersCallback]);
+  }, [navigate, fetchUsersCallback]);
 
   return (
     <>
@@ -29,7 +34,7 @@ function Home() {
           navigate("/login");
         }}
       >
-        Cerrar sesion
+        Cerrar sesión
       </button>
       {users.length > 0 ? (
         users.map((user, indice) => <Card key={indice} user={user} />)
