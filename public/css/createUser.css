@@ -1,0 +1,48 @@
+h2{
+    text-align: center;
+}
+
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form{
+    background-color: rgb(225, 86, 86);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.editForm{
+    align-items: center;
+}
+
+input{
+    margin: 0px 20px;
+}
+
+.inputContainer{
+    padding: 10px;
+}
+
+.buttonContainer{
+    width: 100%;
+}
+
+button{
+    margin: auto;
+    padding: 10px;
+    width: 50%;
+    border: 1px solid black;
+}
+
+button:hover{
+    background-color: rgb(127, 195, 125);
+}
+
+.resetButton:hover{
+    background-color: rgb(195, 125, 125);
+}

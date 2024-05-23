@@ -1,0 +1,16 @@
+.cuadrado{
+  border: 1px solid black;
+  width: 200px;
+}
+
+.padre{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.img{
+  width: 200px;
+  height: 200px;
+}
