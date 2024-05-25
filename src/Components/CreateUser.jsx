@@ -25,6 +25,9 @@ function CreateUser() {
     <>
       <h2>Bienvenid@s a mi web</h2>
       <br />
+      <button style={{ width: "100px" }} onClick={() => navigate("/login")}>
+        Ya tengo usuario
+      </button>
       <div className="formContainer">
         <h4>Crear Usuario</h4>
         <form onSubmit={handleSubmit}>

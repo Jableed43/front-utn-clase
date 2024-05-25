@@ -5,9 +5,10 @@ import useEditUser from "../hooks/useEditUser";
 EditUser.propTypes = {
   user: PropTypes.object.isRequired,
   setEdit: PropTypes.func.isRequired,
+  setFetch: PropTypes.any,
 };
 
-function EditUser({ user, setEdit }) {
+function EditUser({ user, setEdit, setFetch }) {
   const [formData, setFormData] = useState({});
 
   function handleChange(e) {
@@ -32,6 +33,7 @@ function EditUser({ user, setEdit }) {
   async function handleSubmit(e) {
     e.preventDefault();
     await editUser(formData, user._id);
+    setFetch(true);
   }
 
   return (

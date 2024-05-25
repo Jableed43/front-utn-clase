@@ -6,9 +6,10 @@ import useDeleteUser from "../hooks/useDeleteUser";
 
 Card.propTypes = {
   user: PropTypes.object.isRequired,
+  setFetch: PropTypes.any,
 };
 
-function Card({ user }) {
+function Card({ user, setFetch }) {
   const [userState, setUserState] = useState(null);
   const [edit, setEdit] = useState(false);
 
@@ -24,6 +25,7 @@ function Card({ user }) {
   function handleDeleteUser(id) {
     if (id) {
       deleteUser(id);
+      setFetch(true);
     }
   }
 
@@ -38,7 +40,9 @@ function Card({ user }) {
           <button onClick={() => handleEditUser(user)}>Editar</button>
           <button onClick={() => handleDeleteUser(user._id)}>Borrar</button>
         </div>
-        {edit ? <EditUser user={userState} setEdit={setEdit} /> : null}
+        {edit && (
+          <EditUser user={userState} setEdit={setEdit} setFetch={setFetch} />
+        )}
       </div>
     </>
   );
